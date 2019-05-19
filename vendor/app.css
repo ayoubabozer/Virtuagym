@@ -1,0 +1,24 @@
+.selected{
+    background: aliceblue;
+}
+td {
+    word-wrap:break-word;
+    word-break:break-all;
+}
+
+
+.plan-tr {width: 40px;}
+.user-tr {width: 200px;}
+
+.ui-helper {
+    width: 100% !important;
+}
+
+
+.connectedSortable, .connectedSortable li{
+    background: aliceblue;
+}
+
+.sortable{
+    min-height: 50px;
+}

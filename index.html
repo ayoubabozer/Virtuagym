@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Virtuagym plan manager</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link type="text/css" href="vendor/app.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="container" style="margin-top: 30px;max-width: 100%">
+        <div class="row">
+            <div class="col col-md-12" style="text-align: center">
+                <h2>Virtuagym plan manager</h2>
+                <hr>
+            </div>
+        </div>
+
+        <div id="user-modal" class="modal fade">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 id="modal-title" class="modal-title"> Add new user</h4>
+                    </div>
+                    <form id="user-form">
+
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <label for="user-firstname">First name</label>
+                                <input type="text" name="first_name" required class="form-control" id="user-firstname" placeholder="first name ...">
+                            </div>
+                            <div class="form-group">
+                                <label for="user-lastname">Last name</label>
+                                <input type="text" name="last_name" required class="form-control" id="user-lastname" placeholder="last name ...">
+                            </div>
+                            <div class="form-group">
+                                <label for="user-email">Email address</label>
+                                <input type="email" name="email" required class="form-control" id="user-email" placeholder="email ...">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" id="action" name="action" value="addUser">
+                            <input type="hidden" id="hidden_id" name="hidden_id" value="">
+                            <button type="submit" class="btn btn-primary" >Submit</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="plan-modal" class="modal fade">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 id="plan-modal-title" class="modal-title"> Add new plan</h4>
+                    </div>
+                    <form id="plan-form">
+
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <label for="plan-name">Plan name</label>
+                                <input type="text" name="plan_name" required class="form-control" id="plan-name" placeholder="plan name ...">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" id="plan-action" name="action" value="addPlan">
+                            <input type="hidden" id="hidden_plan_id" name="hidden_plan_id" value="">
+                            <button type="submit" class="btn btn-primary" >Submit</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="day-modal" class="modal fade">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 id="day-modal-title" class="modal-title"> Add new day</h4>
+                    </div>
+                    <form id="day-form">
+
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <label for="day-name">Day name</label>
+                                <input type="text" name="day_name" required class="form-control" id="day-name" placeholder="day name ...">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" id="day-action" name="action" value="addDay">
+                            <input type="hidden" id="hidden_day_plan_id" name="hidden_day_plan_id" value="">
+                            <button type="submit" class="btn btn-primary" >Submit</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 50px;">
+            <div class="col col-md-5 col-sm-5 col-xs-5">
+                <h4>Users</h4>
+                <input type="button" class="btn btn-success" value="+ user" style="float: right" id="add-new-user"">
+
+                <table id="user-table" class="table table-hover table-bordered" style="margin-top: 70px">
+                    <thead>
+                        <tr>
+                            <td>First name</td>
+                            <td>Last name</td>
+                            <td>E-mail</td>
+                            <td>Plan</td>
+                            <td>Edit</td>
+                            <td>Delete</td>
+                        </tr>
+                    </thead>
+                    <tbody id="users-tbody">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col col-md-3 col-sm-3 col-xs-3">
+                <h4>Plans</h4>
+                <input type="button" class="btn btn-success" value="+ plan" style="float: right" id="add-new-plan"">
+
+                <table id="plan-table" class="table table-hover table-bordered" style="margin-top: 70px">
+                    <thead>
+                    <tr>
+                        <td>Plan name</td>
+                        <td>Edit</td>
+                        <td>Delete</td>
+                    </tr>
+                    </thead>
+                    <tbody id="plans-tbody">
+
+                    </tbody>
+                </table>
+            </div>
+            <div id="days-div" class="col col-md-2 col-sm-2 col-xs-2">
+
+            </div>
+
+            <div class="col col-md-2 col-sm-2 col-xs-2">
+                <h4>Exercises</h4>
+
+                <div class="card" style="margin-top: 70px">
+                    <ul class="list-group list-group-flush connectedSortable" id="exercise-list">
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="vendor/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+RewriteEngine On # Turn on rewriting engine
+RewriteRule ^users/?$ users.php [NC,L]
+RewriteRule ^users/([0-9]+)/?$ users.php?id=$1 [NC,L]
+RewriteRule ^plans/?$ plans.php [NC,L]
+RewriteRule ^plans/([0-9]+)/?$ plans.php?id=$1 [NC,L]
+RewriteRule ^days/?$ days.php [NC,L]
+RewriteRule ^days/([0-9]+)/?$ days.php?id=$1 [NC,L]
+RewriteRule ^exercises/?$ exercises.php [NC,L]
+RewriteRule ^exercises/([0-9]+)/?$ exercises.php?id=$1 [NC,L]
+RewriteRule ^assignPlans/?$ assignPlans.php [NC,L]
+RewriteRule ^assignPlans/([0-9]+)/?$ assignPlans.php?id=$1 [NC,L]
